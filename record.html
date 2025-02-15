@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar datos en localStorage</title>
+</head>
+<body>
+    <h1>Modificar datos en localStorage</h1>
+    <button onclick="guardarDatos()">Guardar Datos Iniciales</button>
+    <button onclick="modificarDatos()">Modificar Datos</button>
+    <button onclick="mostrarDatos()">Mostrar Datos</button>
+
+    <script>
+        // Función para guardar datos iniciales en localStorage
+        function guardarDatos() {
+            const usuario = {
+                nombre: "Juan",
+                edad: 25,
+                ciudad: "Madrid"
+            };
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+            alert('Datos iniciales guardados correctamente.');
+        }
+
+        // Función para modificar datos en localStorage
+        function modificarDatos() {
+            // Recuperar el objeto guardado
+            const usuarioGuardado = JSON.parse(localStorage.getItem('usuario'));
+
+            if (usuarioGuardado) {
+                // Modificar el objeto
+                usuarioGuardado.edad = 30;
+                usuarioGuardado.ciudad = "Barcelona";
+
+                // Guardar el objeto modificado
+                localStorage.setItem('usuario', JSON.stringify(usuarioGuardado));
+                alert('Datos modificados correctamente.');
+            } else {
+                alert('No hay datos guardados para modificar.');
+            }
+        }
+
+        // Función para mostrar los datos actuales en localStorage
+        function mostrarDatos() {
+            const usuarioGuardado = JSON.parse(localStorage.getItem('usuario'));
+
+            if (usuarioGuardado) {
+                alert(`Datos actuales:\nNombre: ${usuarioGuardado.nombre}\nEdad: ${usuarioGuardado.edad}\nCiudad: ${usuarioGuardado.ciudad}`);
+            } else {
+                alert('No hay datos guardados.');
+            }
+        }
+    </script>
+</body>
+</html>
