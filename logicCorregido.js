@@ -129,7 +129,7 @@ function mostrarGameOver() {
     let overlay = document.getElementById("overlay");
   
     
-    finalScore.innerText = "Puntaje: " + (listaColoresJuego.length);
+    finalScore.innerText = "Puntaje: " + (listaColoresJuego.length - 1);
     finalJuego.style.display = "block";
     overlay.style.display = "initial" // Mostrar pantalla de finalización
   
